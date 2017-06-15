@@ -4,6 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Ship</title>
 	<style>
+		a{
+			color: #fff;
+			font-size: "Microsoft Yahei,Sans-Serif";
+			padding: 3px 5px;
+			background: rgba(0,0,0,.6);
+			text-decoration: none;
+			border-radius: 3px;
+		}
 		.box{
 			width: 1075px;
 			height: 80px;
@@ -73,9 +81,39 @@
 		.depart3,.depart5{
 			transition: all 1s 0.8s;
 		}
+		#shiph{
+			position: absolute;
+			width: 340px;
+			height: 105px;
+			background: url(shiph.png);
+			transition: all 1.6s;
+			z-index: 999;
+		}
+		.shiph{
+			transform: translate(461px,213px);
+		}
+		.shiph2{
+			transform: translate(461px,0px);
+		}
+		.title{
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%,0);
+			bottom: 160px;
+			width: 300px;
+			padding: 20px 30px;
+			background: rgba(0,0,0,.6);
+			border-radius: 20px;
+			text-align: center;
+			color: #fff;
+			margin-left: -45px;
+			transition: all 0.8s;
+		}
 	</style>
 </head>
 <body>
+	<div id="title" class="title">结构分段组装仿真演示</div>
+	<div id="shiph" class="shiph"></div>
 	<div class="box">
 		<div class="component1"></div>
 		<div class="component2"></div>
@@ -92,6 +130,8 @@
 	<script>
 		var separate_btn = document.getElementById('separate');
 		var gather_btn = document.getElementById('gather');
+		var shiph = document.getElementById('shiph');
+		var title = document.getElementById('title');
 		var divs = document.getElementsByClassName('box')[0].getElementsByTagName('div');
 		var len = divs.length;
 			function deal(order){
@@ -108,9 +148,13 @@
 			}
 			separate_btn.onclick = function(){
 				deal("separate");
+				shiph.className = 'shiph2';
+				title.style.opacity = 0;
 			}
 			gather_btn.onclick = function(){
 				deal("gather");
+				shiph.className = 'shiph';
+				title.style.opacity = 1;
 			}
 	</script>
 </body>
